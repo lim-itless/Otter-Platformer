@@ -1,14 +1,16 @@
 ﻿using UnityEngine;
 
-public class ShellItem : MonoBehaviour
+public class ShellCoin : MonoBehaviour
 {
-    [SerializeField] private GameObject popupObject;
+    [SerializeField] private GameObject popupPrefab;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
-            popupObject.SetActive(true);
+            Vector3 popupPosition = new Vector3(transform.position.x, transform.position.y + 0.7f, 0f);
+
+            Instantiate(popupPrefab, popupPosition, Quaternion.identity);
 
             Destroy(gameObject);
         }
