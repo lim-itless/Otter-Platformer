@@ -19,13 +19,7 @@ public class GameManager : MonoBehaviour
 
     public void AddShell(int amount)
     {
-        _playerModel.CurrentShellCount += amount;
-        _playerModel.TotalScore += (amount * 200);
-
-        if (_playerModel.TotalScore > _playerModel.HighScore)
-        {
-            _playerModel.HighScore = _playerModel.TotalScore;
-        }
+        _playerModel.AddShell(amount, 200);
 
         if (_playerModel.CurrentShellCount % 10 == 0)
         {

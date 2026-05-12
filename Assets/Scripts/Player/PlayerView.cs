@@ -10,6 +10,11 @@ public class PlayerView : MonoBehaviour
         animator.SetBool("IsMove", isMove);
     }
 
+    public void SetJump(bool isJump)
+    {
+        animator.SetBool("IsJump", isJump);
+    }
+
     public void SetAttack(bool isAttack)
     {
         animator.SetBool("IsAttack", isAttack);

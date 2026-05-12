@@ -22,4 +22,15 @@ public class PlayerDataModel
         MaxHealth = 100;
         CurrentHealth = MaxHealth;
     }
+
+    public void AddShell(int amount, int scorePerShell)
+    {
+        CurrentShellCount += amount;
+        TotalScore += amount * scorePerShell;
+
+        if (TotalScore > HighScore)
+        {
+            HighScore = TotalScore;
+        }
+    }
 }

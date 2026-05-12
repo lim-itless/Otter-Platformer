@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class MainUI : MonoBehaviour
+public class MainHUD : MonoBehaviour
 {
     [SerializeField] private Image loadedIconImage;
 

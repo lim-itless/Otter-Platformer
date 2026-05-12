@@ -12,6 +12,8 @@ public class ShellCoin : MonoBehaviour
 
             Instantiate(popupPrefab, popupPosition, Quaternion.identity);
 
+            GameManager.Inst.AddShell(1);
+
             Destroy(gameObject);
         }
     }
