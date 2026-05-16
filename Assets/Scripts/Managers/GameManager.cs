@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     public event Action<int> OnShellCountChanged;
     public event Action<int> OnScoreChanged;
     public event Action OnGameClear;
+    public event Action OnGameOver;
 
     private PlayerDataModel _playerModel = new PlayerDataModel();
 
@@ -54,5 +55,12 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("게임 클리어!");
         OnGameClear?.Invoke();
+    }
+
+    public void GameOver()
+    {
+        Debug.Log("게임 오버!");
+
+        OnGameOver?.Invoke();
     }
 }
