@@ -3,10 +3,12 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField] private ResultUI resultUI;
     public static GameManager Inst { get; private set; }
 
     public event Action<int> OnShellCountChanged;
     public event Action<int> OnScoreChanged;
+    public event Action OnGameClear;
 
     private PlayerDataModel _playerModel = new PlayerDataModel();
 
@@ -48,4 +50,9 @@ public class GameManager : MonoBehaviour
         SaveData();
     }
 
+    public void ClearGame()
+    {
+        Debug.Log("게임 클리어!");
+        OnGameClear?.Invoke();
+    }
 }
