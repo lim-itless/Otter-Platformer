@@ -20,6 +20,11 @@ public class PlayerView : MonoBehaviour
         animator.SetBool("IsAttack", isAttack);
     }
 
+    public void SetDance(bool isDance)
+    {
+        animator.SetBool("IsDance", isDance);
+    }
+
     public void Flip(float moveX)
     {
         if (moveX > 0)

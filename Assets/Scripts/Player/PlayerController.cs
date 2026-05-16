@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour
         Move();
         Jump();
         Attack();
+        Dance();
     }
 
     private void Move()
@@ -48,6 +49,14 @@ public class PlayerController : MonoBehaviour
             playerView.SetJump(false);
         }
     }
+    private void CheckGround()
+    {
+        isGrounded = Physics2D.OverlapCircle(
+            groundCheck.position,
+            groundCheckRadius,
+            groundLayer
+        );
+    }
 
     private void Attack()
     {
@@ -58,17 +67,22 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void CheckGround()
+    private void Dance()
     {
-        isGrounded = Physics2D.OverlapCircle(
-            groundCheck.position,
-            groundCheckRadius,
-            groundLayer
-        );
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            playerView.SetDance(true);
+            Invoke(nameof(EndDance), 0.5f);
+        }
     }
 
     private void EndAttack()
     {
         playerView.SetAttack(false);
+    }
+
+    private void EndDance()
+    {
+        playerView.SetDance(false);
     }
 }

@@ -15,8 +15,18 @@ MonoBehaviour:
   m_GroupName: Default Local Group
   m_GUID: 82a96ac8e86e47e4e9a7ee5e8be5a1b8
   m_SerializeEntries:
+  - m_GUID: 3a9bcf811c53a2a4da512b7475b5747e
+    m_Address: Texture2D/Texture2D_Loading_2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 641e739d325a145408c4144b755febac
     m_Address: BGM/MainTheme_1
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7eeb40d72d33ba1459515ec23334f7b9
+    m_Address: Texture2D/Texture2D_Loading_1
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
