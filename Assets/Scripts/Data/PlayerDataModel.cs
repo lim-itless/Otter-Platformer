@@ -12,10 +12,10 @@ public class PlayerDataModel
 
     public PlayerDataModel()
     {
-        ResetData();
+        ResetRunData();
     }
 
-    public void ResetData()
+    public void ResetRunData()
     {
         CurrentShellCount = 0;
         TotalScore = 0;
