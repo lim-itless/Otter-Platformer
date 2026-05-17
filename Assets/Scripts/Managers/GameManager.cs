@@ -3,6 +3,9 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField] private GameObject gameRoot;
+    [SerializeField] private GameObject mainHUD;
+    [SerializeField] private GameObject titleUI;
     [SerializeField] private ResultUI resultUI;
     public static GameManager Inst { get; private set; }
 
@@ -24,6 +27,24 @@ public class GameManager : MonoBehaviour
     {
         _playerModel = NetworkManager.Inst.RequestLoadData();
         _playerModel.ResetRunData();
+
+        ShowTitle();
+    }
+
+    public void ShowTitle()
+    {
+        titleUI.SetActive(true);
+        mainHUD.SetActive(false);
+        gameRoot.SetActive(false);
+
+        resultUI.HidePanel();
+    }
+
+    public void StartGame()
+    {
+        titleUI.SetActive(false);
+        mainHUD.SetActive(true);
+        gameRoot.SetActive(true);
     }
 
     public void AddShell(int amount)
@@ -62,5 +83,12 @@ public class GameManager : MonoBehaviour
         Debug.Log("게임 오버!");
 
         OnGameOver?.Invoke();
+    }
+
+    public void RestartGame()
+    {
+        _playerModel.ResetRunData();
+
+        ShowTitle();
     }
 }

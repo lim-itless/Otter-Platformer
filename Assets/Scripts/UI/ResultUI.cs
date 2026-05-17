@@ -8,6 +8,7 @@ public class ResultUI : MonoBehaviour
     private void Start()
     {
         clearPanel.SetActive(false);
+        gameOverPanel.SetActive(false);
 
         GameManager.Inst.OnGameClear += ShowClear;
         GameManager.Inst.OnGameOver += ShowGameOver;
@@ -24,11 +25,19 @@ public class ResultUI : MonoBehaviour
 
     private void ShowClear()
     {
+        Debug.Log("Clear UI 표시");
         clearPanel.SetActive(true);
     }
 
     public void ShowGameOver()
     {
+        Debug.Log("GameOver UI 표시");
         gameOverPanel.SetActive(true);
+    }
+
+    public void HidePanel()
+    {
+        clearPanel.SetActive(false);
+        gameOverPanel.SetActive(false);
     }
 }
