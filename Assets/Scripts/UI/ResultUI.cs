@@ -1,9 +1,11 @@
-﻿using UnityEngine;
+﻿using TMPro;
+using UnityEngine;
 
 public class ResultUI : MonoBehaviour
 {
     [SerializeField] private GameObject clearPanel;
     [SerializeField] private GameObject gameOverPanel;
+    [SerializeField] private TMP_Text highScoreText;
 
     private void Start()
     {
@@ -31,6 +33,10 @@ public class ResultUI : MonoBehaviour
     private void ShowClear()
     {
         clearPanel.SetActive(true);
+
+        int highScore = GameManager.Inst.PlayerData.HighScore;
+
+        highScoreText.text = $"최고 기록 : {highScore}";
     }
 
     public void ShowGameOver()
@@ -43,4 +49,5 @@ public class ResultUI : MonoBehaviour
         clearPanel.SetActive(false);
         gameOverPanel.SetActive(false);
     }
+
 }
