@@ -10554,10 +10554,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpawnSpot
   _spawnSpotType: 1
-  _startSpawnType: 1
+  _startSpawnType: 2
   _spawnObjectDataId: 
   shellPrefab: {fileID: 320943010697678005, guid: 9a8086cfded389347ba796fe61068324, type: 3}
   Collider_OnSpawnStart: {fileID: 0}
+  shellGroup: {fileID: 493048733}
 --- !u!1 &268787353
 GameObject:
   m_ObjectHideFlags: 0
@@ -11295,6 +11296,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 489130444}
   m_CullTransparentMesh: 1
+--- !u!1 &493048732
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 493048733}
+  m_Layer: 0
+  m_Name: ShellGroup
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &493048733
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 493048732}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -32.97054, y: 4.53869, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 920204273}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &508022185
 GameObject:
   m_ObjectHideFlags: 0
@@ -11340,10 +11372,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpawnSpot
   _spawnSpotType: 1
-  _startSpawnType: 1
+  _startSpawnType: 2
   _spawnObjectDataId: 
   shellPrefab: {fileID: 320943010697678005, guid: 9a8086cfded389347ba796fe61068324, type: 3}
   Collider_OnSpawnStart: {fileID: 0}
+  shellGroup: {fileID: 493048733}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -21684,10 +21717,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpawnSpot
   _spawnSpotType: 1
-  _startSpawnType: 1
+  _startSpawnType: 2
   _spawnObjectDataId: 
   shellPrefab: {fileID: 320943010697678005, guid: 9a8086cfded389347ba796fe61068324, type: 3}
   Collider_OnSpawnStart: {fileID: 0}
+  shellGroup: {fileID: 493048733}
 --- !u!1 &632147995
 GameObject:
   m_ObjectHideFlags: 0
@@ -21703,7 +21737,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &632147996
 Transform:
   m_ObjectHideFlags: 0
@@ -21968,7 +22002,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 676744441}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2061503110}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: RestartGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &676744441
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22223,6 +22269,37 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &793017978
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 793017979}
+  m_Layer: 0
+  m_Name: PlayerStartPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &793017979
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 793017978}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -38.38087, y: 4.0946403, z: 0}
+  m_LocalScale: {x: 1.1, y: 1.1, z: 1.1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 920204273}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &855774337
 GameObject:
   m_ObjectHideFlags: 0
@@ -22268,10 +22345,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpawnSpot
   _spawnSpotType: 1
-  _startSpawnType: 1
+  _startSpawnType: 2
   _spawnObjectDataId: 
   shellPrefab: {fileID: 320943010697678005, guid: 9a8086cfded389347ba796fe61068324, type: 3}
   Collider_OnSpawnStart: {fileID: 0}
+  shellGroup: {fileID: 493048733}
 --- !u!1 &882953002
 GameObject:
   m_ObjectHideFlags: 0
@@ -22394,10 +22472,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpawnSpot
   _spawnSpotType: 1
-  _startSpawnType: 1
+  _startSpawnType: 2
   _spawnObjectDataId: 
   shellPrefab: {fileID: 320943010697678005, guid: 9a8086cfded389347ba796fe61068324, type: 3}
   Collider_OnSpawnStart: {fileID: 0}
+  shellGroup: {fileID: 493048733}
 --- !u!1 &920204272
 GameObject:
   m_ObjectHideFlags: 0
@@ -22428,11 +22507,13 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 585655887}
+  - {fileID: 1221763961}
+  - {fileID: 793017979}
   - {fileID: 1475370084}
   - {fileID: 1093922807}
-  - {fileID: 1221763961}
   - {fileID: 1059500842}
   - {fileID: 1872794316}
+  - {fileID: 493048733}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1036154108
@@ -22480,10 +22561,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpawnSpot
   _spawnSpotType: 1
-  _startSpawnType: 1
+  _startSpawnType: 2
   _spawnObjectDataId: 
   shellPrefab: {fileID: 320943010697678005, guid: 9a8086cfded389347ba796fe61068324, type: 3}
   Collider_OnSpawnStart: {fileID: 0}
+  shellGroup: {fileID: 493048733}
 --- !u!1 &1059500841
 GameObject:
   m_ObjectHideFlags: 0
@@ -22796,10 +22878,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpawnSpot
   _spawnSpotType: 1
-  _startSpawnType: 1
+  _startSpawnType: 2
   _spawnObjectDataId: 
   shellPrefab: {fileID: 320943010697678005, guid: 9a8086cfded389347ba796fe61068324, type: 3}
   Collider_OnSpawnStart: {fileID: 0}
+  shellGroup: {fileID: 493048733}
 --- !u!1 &1154855528
 GameObject:
   m_ObjectHideFlags: 0
@@ -23320,7 +23403,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2061503110}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: StartGame
+        m_MethodName: RestartGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -23720,6 +23803,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1475370084}
   - component: {fileID: 1475370083}
+  - component: {fileID: 1475370086}
   - component: {fileID: 1475370085}
   - component: {fileID: 1475370082}
   - component: {fileID: 1475370081}
@@ -23844,7 +23928,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8422ca5d85239ee42a03f0dc2cbb8bcb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerFallChecker
-  fallLimitY: -10
+  fallLimitY: -15
+--- !u!114 &1475370086
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1475370080}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c23b62bd4608f8f449527bcd6f93bd57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerRespawn
+  startPoint: {fileID: 793017979}
+  playerRigidbody: {fileID: 1475370081}
 --- !u!1 &1488693543
 GameObject:
   m_ObjectHideFlags: 0
@@ -24164,10 +24262,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpawnSpot
   _spawnSpotType: 1
-  _startSpawnType: 1
+  _startSpawnType: 2
   _spawnObjectDataId: 
   shellPrefab: {fileID: 320943010697678005, guid: 9a8086cfded389347ba796fe61068324, type: 3}
   Collider_OnSpawnStart: {fileID: 0}
+  shellGroup: {fileID: 493048733}
 --- !u!1 &1661011055
 GameObject:
   m_ObjectHideFlags: 0
@@ -24682,7 +24781,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1849968102}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2061503110}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: RestartGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1849968102
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24858,6 +24969,7 @@ MonoBehaviour:
   _spawnObjectDataId: dialogue_otter_sign_1_100
   shellPrefab: {fileID: 0}
   Collider_OnSpawnStart: {fileID: 1920017023}
+  shellGroup: {fileID: 0}
 --- !u!1 &1929056030
 GameObject:
   m_ObjectHideFlags: 0
@@ -25084,10 +25196,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpawnSpot
   _spawnSpotType: 1
-  _startSpawnType: 1
+  _startSpawnType: 2
   _spawnObjectDataId: 
   shellPrefab: {fileID: 320943010697678005, guid: 9a8086cfded389347ba796fe61068324, type: 3}
   Collider_OnSpawnStart: {fileID: 0}
+  shellGroup: {fileID: 493048733}
 --- !u!1 &2012245919
 GameObject:
   m_ObjectHideFlags: 0
@@ -25270,10 +25383,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpawnSpot
   _spawnSpotType: 1
-  _startSpawnType: 1
+  _startSpawnType: 2
   _spawnObjectDataId: 
   shellPrefab: {fileID: 320943010697678005, guid: 9a8086cfded389347ba796fe61068324, type: 3}
   Collider_OnSpawnStart: {fileID: 0}
+  shellGroup: {fileID: 493048733}
 --- !u!1 &2023989387
 GameObject:
   m_ObjectHideFlags: 0
@@ -25422,6 +25536,11 @@ MonoBehaviour:
   gameRoot: {fileID: 920204272}
   mainHUD: {fileID: 1747368696}
   titleUI: {fileID: 882953002}
+  playerRespawn: {fileID: 1475370086}
+  playerFallChecker: {fileID: 1475370085}
+  goalPoint: {fileID: 1221763959}
+  spawnSpots: []
+  shellGroup: {fileID: 493048733}
   resultUI: {fileID: 714283458}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

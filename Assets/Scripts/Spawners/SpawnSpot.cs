@@ -15,7 +15,6 @@ public enum StartSpawnType
     OnAwake,
     OnEnable,
     OnRange,
-    // UniTask나 코루틴으로 일정 시간마다 랜덤 생성도 구현해보자
 }
 
 public class SpawnSpot : MonoBehaviour
@@ -26,6 +25,7 @@ public class SpawnSpot : MonoBehaviour
     [SerializeField] private string _spawnObjectDataId;
     [SerializeField] private GameObject shellPrefab;
     [SerializeField] private Collider2D Collider_OnSpawnStart;
+    [SerializeField] private Transform shellGroup;
 
     private void Awake()
     {
@@ -37,16 +37,20 @@ public class SpawnSpot : MonoBehaviour
 
     private void Start()
     {
-        if (_startSpawnType == StartSpawnType.OnEnable)
-        {
-            StartSpawn();
-        }
-
-
         if (Collider_OnSpawnStart != null)
         {
             Collider_OnSpawnStart.enabled = (_startSpawnType == StartSpawnType.OnRange);
         }
+    }
+
+    private void OnEnable()
+    {
+        if (Collider_OnSpawnStart == null)
+        {
+            return;
+        }
+
+        Collider_OnSpawnStart.enabled = (_startSpawnType == StartSpawnType.OnRange);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -62,7 +66,22 @@ public class SpawnSpot : MonoBehaviour
         switch (_spawnSpotType)
         {
             case SpawnSpotType.Shell:
-                Instantiate(shellPrefab, transform.position, Quaternion.identity);
+                if (shellPrefab == null)
+                {
+                    Debug.LogError($"{name} Shell Prefab 없음");
+                    return;
+                }
+
+                if (shellGroup == null)
+                {
+                    Debug.LogError($"{name} Shell Container 없음");
+                    return;
+                }
+
+                GameObject shell = Instantiate(shellPrefab, transform.position, Quaternion.identity, shellGroup);
+
+                Debug.Log($"{name} Shell 생성 완료 / 생성된 오브젝트: {shell.name} / 부모: {shell.transform.parent.name} / 컨테이너 자식 수: {shellGroup.childCount}");
+
                 gameObject.SetActive(false);
                 break;
             case SpawnSpotType.DropItem:
@@ -78,4 +97,17 @@ public class SpawnSpot : MonoBehaviour
         }
     }
 
+    public void ResetSpawnSpot()
+    {
+        Debug.Log($"{name} ResetSpawnSpot 호출됨 / Type: {_spawnSpotType}");
+
+        gameObject.SetActive(true);
+
+        if (_spawnSpotType != SpawnSpotType.Shell)
+        {
+            return;
+        }
+
+        StartSpawn();
+    }
 }

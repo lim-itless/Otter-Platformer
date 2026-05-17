@@ -6,6 +6,11 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject gameRoot;
     [SerializeField] private GameObject mainHUD;
     [SerializeField] private GameObject titleUI;
+    [SerializeField] private PlayerRespawn playerRespawn;
+    [SerializeField] private PlayerFallChecker playerFallChecker;
+    [SerializeField] private GoalPoint goalPoint;
+    [SerializeField] private SpawnSpot[] spawnSpots;
+    [SerializeField] private Transform shellGroup;
     [SerializeField] private ResultUI resultUI;
     public static GameManager Inst { get; private set; }
 
@@ -87,8 +92,39 @@ public class GameManager : MonoBehaviour
 
     public void RestartGame()
     {
+        Debug.Log($"SpawnSpot 개수: {spawnSpots.Length}");
+
         _playerModel.ResetRunData();
 
-        ShowTitle();
+        OnShellCountChanged?.Invoke(_playerModel.CurrentShellCount);
+        OnScoreChanged?.Invoke(_playerModel.TotalScore);
+
+        StartGame();
+
+        if (shellGroup != null)
+        {
+            for (int i = shellGroup.childCount - 1; i >= 0; i--)
+            {
+                Destroy(shellGroup.GetChild(i).gameObject);
+            }
+        }
+
+        if (spawnSpots != null)
+        {
+            for (int i = 0; i < spawnSpots.Length; i++)
+            {
+                if (spawnSpots[i] == null)
+                {
+                    continue;
+                }
+
+                spawnSpots[i].ResetSpawnSpot();
+            }
+        }
+
+        playerRespawn.ResetPlayer();
+        playerFallChecker.ResetFallState();
+        goalPoint.ResetGoalPoint();
+        resultUI.HidePanel();
     }
 }

@@ -20,4 +20,9 @@ public class PlayerFallChecker : MonoBehaviour
             GameManager.Inst.GameOver();
         }
     }
+
+    public void ResetFallState()
+    {
+        isGameOver = false;
+    }
 }

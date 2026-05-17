@@ -46,4 +46,10 @@ public class GoalPoint : MonoBehaviour
 
         canClear = false;
     }
+
+    public void ResetGoalPoint()
+    {
+        isCleared = false;
+        canClear = false;
+    }
 }
