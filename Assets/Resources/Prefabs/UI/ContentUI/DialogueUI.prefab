@@ -556,7 +556,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UIButton
   Button_Base: {fileID: 8477842183864915461}
   Text_Base: {fileID: 0}
-  Image_Base: {fileID: 0}
   Image_Select: {fileID: 0}
 --- !u!114 &7935736019575333027
 MonoBehaviour:
@@ -696,7 +695,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 42
-    m_Alignment: 3
+    m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
