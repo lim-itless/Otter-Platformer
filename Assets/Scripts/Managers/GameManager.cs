@@ -38,25 +38,43 @@ public class GameManager : MonoBehaviour
 
     public void ShowTitle()
     {
-        titleUI.SetActive(true);
-        mainHUD.SetActive(false);
-        gameRoot.SetActive(false);
-
-        resultUI.HidePanel();
+        if (titleUI != null)
+        {
+            titleUI.SetActive(true);
+        }
+        if (mainHUD != null)
+        {
+            mainHUD.SetActive(false);
+        }
+        if (gameRoot != null)
+        {
+            gameRoot.SetActive(false);
+        }
+        if (resultUI != null)
+        {
+            resultUI.HidePanel();
+        }
     }
 
     public void StartGame()
     {
-        titleUI.SetActive(false);
-        mainHUD.SetActive(true);
-        gameRoot.SetActive(true);
+        if (titleUI != null)
+        {
+            titleUI.SetActive(false);
+        }
+        if (mainHUD != null)
+        {
+            mainHUD.SetActive(true);
+        }
+        if (gameRoot != null)
+        {
+            gameRoot.SetActive(true);
+        }
     }
 
     public void AddShell(int amount)
     {
         _playerModel.AddShell(amount, 200);
-
-        Debug.Log($"조개: {_playerModel.CurrentShellCount}개 / 점수: {_playerModel.TotalScore}점");
 
         OnShellCountChanged?.Invoke(_playerModel.CurrentShellCount);
         OnScoreChanged?.Invoke(_playerModel.TotalScore);
@@ -79,21 +97,16 @@ public class GameManager : MonoBehaviour
 
     public void ClearGame()
     {
-        Debug.Log("게임 클리어!");
         OnGameClear?.Invoke();
     }
 
     public void GameOver()
     {
-        Debug.Log("게임 오버!");
-
         OnGameOver?.Invoke();
     }
 
     public void RestartGame()
     {
-        Debug.Log($"SpawnSpot 개수: {spawnSpots.Length}");
-
         _playerModel.ResetRunData();
 
         OnShellCountChanged?.Invoke(_playerModel.CurrentShellCount);
@@ -122,9 +135,24 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        playerRespawn.ResetPlayer();
-        playerFallChecker.ResetFallState();
-        goalPoint.ResetGoalPoint();
-        resultUI.HidePanel();
+        if (playerRespawn != null)
+        {
+            playerRespawn.ResetPlayer();
+        }
+
+        if (playerFallChecker != null)
+        {
+            playerFallChecker.ResetFallState();
+        }
+
+        if (goalPoint != null)
+        {
+            goalPoint.ResetGoalPoint();
+        }
+
+        if (resultUI != null)
+        {
+            resultUI.HidePanel();
+        }
     }
 }

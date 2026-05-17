@@ -4,9 +4,7 @@ public enum SpawnSpotType
 {
     None = 0,
     Shell,
-    DropItem,
-    Dialogue,
-    Monster
+    Dialogue
 }
 
 public enum StartSpawnType
@@ -35,14 +33,6 @@ public class SpawnSpot : MonoBehaviour
         }
     }
 
-    private void Start()
-    {
-        if (Collider_OnSpawnStart != null)
-        {
-            Collider_OnSpawnStart.enabled = (_startSpawnType == StartSpawnType.OnRange);
-        }
-    }
-
     private void OnEnable()
     {
         if (Collider_OnSpawnStart == null)
@@ -68,28 +58,21 @@ public class SpawnSpot : MonoBehaviour
             case SpawnSpotType.Shell:
                 if (shellPrefab == null)
                 {
-                    Debug.LogError($"{name} Shell Prefab 없음");
+                    Debug.LogError($"{name} Shell Prefab 필요");
                     return;
                 }
 
                 if (shellGroup == null)
                 {
-                    Debug.LogError($"{name} Shell Container 없음");
+                    Debug.LogError($"{name} Shell Group 필요");
                     return;
                 }
 
                 GameObject shell = Instantiate(shellPrefab, transform.position, Quaternion.identity, shellGroup);
 
-                Debug.Log($"{name} Shell 생성 완료 / 생성된 오브젝트: {shell.name} / 부모: {shell.transform.parent.name} / 컨테이너 자식 수: {shellGroup.childCount}");
-
                 gameObject.SetActive(false);
                 break;
-            case SpawnSpotType.DropItem:
-                GameObjectManager.Inst.CreateFieldObject(_spawnObjectDataId, this.transform).Forget();
-                this.gameObject.SetActive(false);
-                break;
-            case SpawnSpotType.Monster:
-                break;
+
             case SpawnSpotType.Dialogue:
                 UIManager.Instance.OpenDialogueUI(_spawnObjectDataId);
                 this.gameObject.SetActive(false);
@@ -99,8 +82,6 @@ public class SpawnSpot : MonoBehaviour
 
     public void ResetSpawnSpot()
     {
-        Debug.Log($"{name} ResetSpawnSpot 호출됨 / Type: {_spawnSpotType}");
-
         gameObject.SetActive(true);
 
         if (_spawnSpotType != SpawnSpotType.Shell)

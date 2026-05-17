@@ -12,30 +12,24 @@ public class UIManager : MonoBehaviour
 
     public static UIManager Instance { get; set; }
 
-    // 얘는 생성과 제거에 관한 부분 -> Instancing과 가비지컬렉터와 연관이 있는 애
     private Dictionary<UIType, UIBase> _createdUIDic = new Dictionary<UIType, UIBase>();
-    // 얘는 활성과 비활성에 관한 부분 -> SetActive
     private HashSet<UIType> _openedUIDic = new HashSet<UIType>();
-
 
     private void Awake()
     {
         Instance = this;
     }
 
-    private void Start()
-    {
-        // 매니저들이 탄생한 후에 UI매니저가 처음으로 게임이 실행될 때 필요한 UI들을 오픈해준다!
-        this.ShowStartupUIOnGameStart();
-    }
+    //private void Start()
+    //{
+    //    this.ShowStartupUIOnGameStart();
+    //}
 
     public UIBase OpenUI(UIRootType uiRootType, UIType uiType, bool isInitialHide = false)
     {
-        // 딱히 요청이 있진 않고 오픈만 하면 되는 UI에서 사용
-
         var openedUI = GetCreatedUI(uiRootType, uiType);
 
-        bool isSetActiveOnOpen = (isInitialHide == false); // 열었을 때 기본적으로 숨겨서 열 것인지 체크
+        bool isSetActiveOnOpen = (isInitialHide == false);
         if (_openedUIDic.Contains(uiType) == false)
         {
             openedUI.gameObject.SetActive(isSetActiveOnOpen);

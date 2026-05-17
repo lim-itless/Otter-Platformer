@@ -6,11 +6,19 @@ public class ShellCoin : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (GameManager.Inst == null)
+        {
+            return;
+        }
+
         if (collision.CompareTag("Player"))
         {
             Vector3 popupPosition = new Vector3(transform.position.x, transform.position.y + 0.7f, 0f);
 
-            Instantiate(popupPrefab, popupPosition, Quaternion.identity);
+            if (popupPrefab != null)
+            {
+                Instantiate(popupPrefab, popupPosition, Quaternion.identity);
+            }
 
             GameManager.Inst.AddShell(1);
 

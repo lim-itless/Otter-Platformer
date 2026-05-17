@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class WorldPopup : MonoBehaviour
 {
+    [SerializeField] private float lifeTime = 3f;
+
     private void OnEnable()
     {
         StartCoroutine(CoCloseSelf());
@@ -10,7 +12,7 @@ public class WorldPopup : MonoBehaviour
 
     private IEnumerator CoCloseSelf()
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(lifeTime);
 
         Destroy(gameObject);
     }

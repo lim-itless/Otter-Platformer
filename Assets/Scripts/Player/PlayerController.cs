@@ -3,7 +3,7 @@
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private PlayerView playerView;
-    [SerializeField] private Rigidbody2D rigidbody;
+    [SerializeField] private Rigidbody2D playerRigidbody;
 
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private float jumpForce = 7f;
@@ -33,18 +33,18 @@ public class PlayerController : MonoBehaviour
         playerView.SetMove(isMove);
         playerView.Flip(moveX);
 
-        rigidbody.linearVelocity = new Vector2(moveX * moveSpeed, rigidbody.linearVelocity.y);
+        playerRigidbody.linearVelocity = new Vector2(moveX * moveSpeed, playerRigidbody.linearVelocity.y);
     }
 
     private void Jump()
     {
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
-            rigidbody.linearVelocity = new Vector2(rigidbody.linearVelocity.x, jumpForce);
+            playerRigidbody.linearVelocity = new Vector2(playerRigidbody.linearVelocity.x, jumpForce);
             playerView.SetJump(true);
         }
 
-        if (isGrounded && rigidbody.linearVelocity.y <= 0)
+        if (isGrounded && playerRigidbody.linearVelocity.y <= 0)
         {
             playerView.SetJump(false);
         }

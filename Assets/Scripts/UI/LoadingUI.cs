@@ -19,7 +19,13 @@ public class LoadingUI : UIBase
     private void OnEnable()
     {
         LoadAndSetLoadingImg();
+    }
 
+    private void OnDisable()
+    {
+        _cancelToken?.Cancel();
+        _cancelToken?.Dispose();
+        _cancelToken = null;
     }
 
     private void LoadAndSetLoadingImg()
@@ -48,20 +54,16 @@ public class LoadingUI : UIBase
         float elapsed = 0f;
         Slider_LoadingBar.value = 0f;
 
-        // 1. 지정된 시간(duration) 동안 반복
         while (elapsed < duration)
         {
             elapsed += Time.deltaTime;
 
-            // 2. 진행률 계산 (0.0 ~ 1.0)
             float progress = Mathf.Clamp01(elapsed / duration);
 
-            // 가짜 연출용 ====
             if (_pauseIndex < _pausePoints.Length && progress >= _pausePoints[_pauseIndex])
             {
                 float pausePointValue = _pausePoints[_pauseIndex];
                 Slider_LoadingBar.value = pausePointValue;
-                // 1초간 대기 (비동기)
                 await UniTask.Delay(TimeSpan.FromSeconds(pausePointValue), cancellationToken: _cancelToken.Token);
                 _pauseIndex++;
             }
@@ -69,11 +71,9 @@ public class LoadingUI : UIBase
             Slider_LoadingBar.value = progress;
             ChangeColorByLoadingBarValue(progress);
 
-            // 3. 다음 프레임까지 대기 (매 프레임 갱신)
             await UniTask.Yield(PlayerLoopTiming.Update, _cancelToken.Token);
         }
 
-        // 4. 완료 처리
         Slider_LoadingBar.value = 1.0f;
         UIManager.Instance.CloseLoadingUI();
     }

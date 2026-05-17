@@ -31,8 +31,13 @@ public class MainHUD : MonoBehaviour
         UpdateScore(GameManager.Inst.PlayerData.TotalScore);
     }
 
-    private void OnDisable()
+    private void OnDestroy()
     {
+        if (GameManager.Inst == null)
+        {
+            return;
+        }
+
         GameManager.Inst.OnShellCountChanged -= UpdateShellCount;
         GameManager.Inst.OnScoreChanged -= UpdateScore;
     }
