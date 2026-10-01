@@ -3,6 +3,7 @@
 public class ShellCoin : MonoBehaviour
 {
     [SerializeField] private GameObject popupPrefab;
+    [SerializeField] private AudioClip pickupSfx;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -18,6 +19,11 @@ public class ShellCoin : MonoBehaviour
             if (popupPrefab != null)
             {
                 Instantiate(popupPrefab, popupPosition, Quaternion.identity);
+            }
+
+            if (SoundManager.Inst != null)
+            {
+                SoundManager.Inst.PlaySFX(pickupSfx);
             }
 
             GameManager.Inst.AddShell(1);

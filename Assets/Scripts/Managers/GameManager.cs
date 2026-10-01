@@ -54,6 +54,10 @@ public class GameManager : MonoBehaviour
         {
             resultUI.HidePanel();
         }
+        if (SoundManager.Inst != null)
+        {
+            SoundManager.Inst.PlayBGM("BGM/MainTheme_2", true);
+        }
     }
 
     public void StartGame()
@@ -62,13 +66,20 @@ public class GameManager : MonoBehaviour
         {
             titleUI.SetActive(false);
         }
+
         if (mainHUD != null)
         {
             mainHUD.SetActive(true);
         }
+
         if (gameRoot != null)
         {
             gameRoot.SetActive(true);
+        }
+
+        if (SoundManager.Inst != null)
+        {
+            SoundManager.Inst.PlayBGM("BGM/MainTheme_1", true);
         }
     }
 
@@ -97,11 +108,21 @@ public class GameManager : MonoBehaviour
 
     public void ClearGame()
     {
+        if (SoundManager.Inst != null)
+        {
+            SoundManager.Inst.PlayBGM("BGM/GameClear", false);
+        }
+
         OnGameClear?.Invoke();
     }
 
     public void GameOver()
     {
+        if (SoundManager.Inst != null)
+        {
+            SoundManager.Inst.PlayBGM("BGM/GameOver", false);
+        }
+
         OnGameOver?.Invoke();
     }
 

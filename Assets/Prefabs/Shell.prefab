@@ -83,6 +83,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ShellItem
   popupPrefab: {fileID: 7059590134039955388, guid: 77d297f52dbc32442ad75086980ef178, type: 3}
+  pickupSfx: {fileID: 8300000, guid: 41ee945ab4a47194593e5fb3907ddbdf, type: 3}
 --- !u!1 &8793990070006701480
 GameObject:
   m_ObjectHideFlags: 0
